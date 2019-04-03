@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="tomaten" />
     <orderEntry type="library" name="activemq-all-5.15.8" level="project" />
+    <orderEntry type="module" module-name="sensor" />
   </component>
 </module>

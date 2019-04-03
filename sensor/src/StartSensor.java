@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
-public class Main {
+public class StartSensor {
     public static void main(String[] args) {
 
         Scanner command = new Scanner(System.in);
+        ManagerGateway managerGateway = new ManagerGateway();
 
         System.out.println("Send temperature in C*: ");
         boolean running = true;
@@ -12,12 +13,9 @@ public class Main {
 
             switch(command.nextLine()){
 
-                case "start":
-                    System.out.println("Machine started!");
-                    break;
-
-                case "stop":
-                    System.out.println("Machine stopped.");
+                case "send":
+                    // managerGateway.sendSensorData("Hello world");
+                    System.out.println("Message send!");
                     break;
 
                 case "exit":

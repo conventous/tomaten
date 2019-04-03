@@ -1,10 +1,15 @@
-import messaging.ApplicationGateway;
-import messaging.MessageReceiverGateway;
-import messaging.MessageSenderGateway;
+import messaging.MessageSenderGatewayActiveMQ;
+import messaging.models.SensorData;
 
-public class ManagerGateway extends ApplicationGateway {
+public class ManagerGateway {
+
+    private MessageSenderGatewayActiveMQ messageSenderGatewayActiveMQ;
 
     public ManagerGateway() {
-        super(new MessageSenderGateway("SensorDataTEMP"));
+       this.messageSenderGatewayActiveMQ = new MessageSenderGatewayActiveMQ( "SensorQueue");
+    }
+
+    public void sendSensorData(SensorData sensorData){
+        this.messageSenderGatewayActiveMQ.sendMessage(sensorData.toString());
     }
 }
