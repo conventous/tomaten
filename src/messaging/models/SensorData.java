@@ -24,4 +24,13 @@ public class SensorData {
     public Date getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return "SensorData{" +
+                "sensorID=" + sensorID +
+                ", celsius=" + celsius +
+                ", date=" + date +
+                '}';
+    }
 }
