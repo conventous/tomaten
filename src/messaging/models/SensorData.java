@@ -2,23 +2,17 @@ package messaging.models;
 
 import java.util.Date;
 
-public class SensorData {
+public abstract class SensorData {
     private final int sensorID;
-    private final int celsius;
     private final Date date;
 
-    public SensorData(int sensorID, int celsius, Date date) {
+    public SensorData(int sensorID, Date date) {
         this.sensorID = sensorID;
-        this.celsius = celsius;
         this.date = date;
     }
 
     public int getSensorID() {
         return sensorID;
-    }
-
-    public int getCelsius() {
-        return celsius;
     }
 
     public Date getDate() {
@@ -29,7 +23,6 @@ public class SensorData {
     public String toString() {
         return "SensorData{" +
                 "sensorID=" + sensorID +
-                ", celsius=" + celsius +
                 ", date=" + date +
                 '}';
     }

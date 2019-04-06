@@ -1,28 +1,30 @@
-import messaging.models.SensorData;
+package temp;
+
+import messaging.models.SensorDataTemp;
 
 import java.util.Date;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Measurment extends TimerTask {
-    private final SensorManager sensorManager;
+public class MeasurmentTemp extends TimerTask {
+    private final SensorManagerTemp sensorManager;
 
-    public Measurment(SensorManager sensorManager) {
+    public MeasurmentTemp(SensorManagerTemp sensorManager) {
         this.sensorManager = sensorManager;
     }
 
     @Override
     public void run() {
-        SensorData sensorData = this.generateRandomSensorData();
+        SensorDataTemp sensorData = this.generateRandomSensorData();
         this.sensorManager.newSensorData(sensorData);
     }
 
-    private SensorData generateRandomSensorData(){
+    private SensorDataTemp generateRandomSensorData(){
         int minTemp = 20;
         int maxTemp = 35;
         int randomTemperature =  ThreadLocalRandom.current().nextInt(minTemp, maxTemp+ 1);
 
-        SensorData sensorData = new SensorData(9001, randomTemperature, new Date());
+        SensorDataTemp sensorData = new SensorDataTemp(9001, new Date(), randomTemperature);
         System.out.println("Generated random sensorData: " + sensorData.toString());
         return sensorData;
     }

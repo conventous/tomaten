@@ -1,3 +1,5 @@
+package gateway;
+
 import com.google.gson.Gson;
 import messaging.MessageSenderGatewayActiveMQ;
 import messaging.models.SensorData;
@@ -7,9 +9,11 @@ public class ManagerGateway {
     private MessageSenderGatewayActiveMQ messageSenderGatewayActiveMQ;
     private Gson gson;
 
-    public ManagerGateway() {
-       this.messageSenderGatewayActiveMQ = new MessageSenderGatewayActiveMQ( "SensorQueue");
-       this.gson = new Gson();
+    public ManagerGateway(String type) {
+        this.messageSenderGatewayActiveMQ = new MessageSenderGatewayActiveMQ(type);
+        this.messageSenderGatewayActiveMQ.initProducerQueue(type);
+
+        this.gson = new Gson();
     }
 
     public void sendSensorData(SensorData sensorData){

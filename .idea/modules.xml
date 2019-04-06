@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/device/device.iml" filepath="$PROJECT_DIR$/device/device.iml" />
-      <module fileurl="file://$PROJECT_DIR$/manager/manager.iml" filepath="$PROJECT_DIR$/manager/manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/regulator/regulator.iml" filepath="$PROJECT_DIR$/regulator/regulator.iml" />
       <module fileurl="file://$PROJECT_DIR$/sensor/sensor.iml" filepath="$PROJECT_DIR$/sensor/sensor.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomaten.iml" filepath="$PROJECT_DIR$/tomaten.iml" />
     </modules>

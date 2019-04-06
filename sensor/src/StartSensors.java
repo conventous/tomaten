@@ -1,13 +1,17 @@
-import java.util.Scanner;
+import temp.SensorManagerTemp;
+import water.SensorManagerWater;
 
-public class StartSensor {
+public class StartSensors {
     public static void main(String[] args) {
 
-        SensorManager sensorManager = new SensorManager(9001);
-        sensorManager.start();
+        SensorManagerTemp sensorManagerTemp = new SensorManagerTemp(9001);
+        sensorManagerTemp.start();
+
+        SensorManagerWater sensorManagerWater = new SensorManagerWater(42);
+        sensorManagerWater.start();
 
 //        Scanner command = new Scanner(System.in);
-//        ManagerGateway managerGateway = new ManagerGateway();
+//        gateway.ManagerGateway managerGateway = new gateway.ManagerGateway();
 //
 //        System.out.println("Send temperature in C*: ");
 //        boolean running = true;
