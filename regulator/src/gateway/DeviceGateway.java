@@ -25,4 +25,6 @@ public class DeviceGateway {
     }
 
     //todo receive heartbeats with corrID
+    //todo lijst van alle devices?
+    //todo hoe weet ik dat alle devices hebben gereageerd op de poll?
 }

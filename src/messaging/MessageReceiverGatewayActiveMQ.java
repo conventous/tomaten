@@ -19,9 +19,8 @@ public class MessageReceiverGatewayActiveMQ {
     public void initConsumerQueue(String queue){
         try {
             connection = connectionFactory.createConnection();
-            //connection.start();
 
-            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE); //todo aanpassen voor testen DLQ mogelijk
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
             receiveDestination = session.createQueue(queue);
 
@@ -35,9 +34,8 @@ public class MessageReceiverGatewayActiveMQ {
 
         try {
             connection = connectionFactory.createConnection();
-            //connection.start();
 
-            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE); //todo aanpassen voor testen DLQ mogelijk
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
             receiveDestination = session.createTopic(topic);
 
