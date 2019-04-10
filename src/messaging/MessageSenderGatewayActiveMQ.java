@@ -49,12 +49,38 @@ public class MessageSenderGatewayActiveMQ {
         }
     }
 
-    public void sendMessage(String message){
+    public String sendMessage(String message){
         try {
             ActiveMQTextMessage msg = new ActiveMQTextMessage();
             msg.setText(message);
 
             this.producer.send(msg);
+
+            return msg.getJMSCorrelationID();
+        } catch (JMSException e) {
+            e.printStackTrace();
+            return "ERROR CORR ID";
+        }
+    }
+
+    public void sendMessage(Message message, String queue){
+        try {
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            sendDestination = session.createQueue(queue);
+            producer = session.createProducer(sendDestination);
+
+            this.producer.send(sendDestination, message);
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendMessage(String message, String queue){
+        try {
+            ActiveMQTextMessage msg = new ActiveMQTextMessage();
+            msg.setText(message);
+
+            this.producer.send(session.createQueue(queue), msg);
         } catch (JMSException e) {
             e.printStackTrace();
         }

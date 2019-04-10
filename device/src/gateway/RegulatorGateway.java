@@ -23,7 +23,7 @@ public class RegulatorGateway {
 
     public RegulatorGateway(HeaterManager heaterManager) {
         this.messageReceiverGatewayHeartbeat = new MessageReceiverGatewayActiveMQ("");
-        this.messageReceiverGatewayHeartbeat.initConsumerTopic("DeviceStatus"); //todo move to commandChannel
+        this.messageReceiverGatewayHeartbeat.initConsumerQueue("device#"+heaterManager.getDeviceID());
         this.messageReceiverGatewayHeartbeat.setListener(this::heartbeatPollReceived);
 
         this.messageSenderGatewayActiveMQ = new MessageSenderGatewayActiveMQ("");
@@ -33,7 +33,8 @@ public class RegulatorGateway {
         this.heaterManager = heaterManager;
     }
 
-    public void heartbeatPollReceived(Message message){
+    //todo: command or poll?
+    private void heartbeatPollReceived(Message message){
         try {
             //Prepare heartbeat data
             String correlationID = message.getJMSCorrelationID();
@@ -45,9 +46,13 @@ public class RegulatorGateway {
             reply.setCorrelationId(correlationID);
             this.messageSenderGatewayActiveMQ.sendMessageCorr(reply);
 
-            System.out.println("Device #"+this.heaterManager.getDeviceID() + " received poll");
+            System.out.println("Device #"+this.heaterManager.getDeviceID() + " received status poll");
         } catch (JMSException e) {
             e.printStackTrace();
         }
+    }
+
+    private void commandReceived(){
+
     }
 }

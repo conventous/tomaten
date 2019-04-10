@@ -22,7 +22,7 @@ public class RegulationManager {
 
         this.sensorData = new ArrayList<>();
 
-        timer.schedule(new HeartbeatPoller(this.deviceGateway), 0, 2500);
+        timer.schedule(new HeartbeatPoller(this.deviceGateway), 0, 4500);
     }
 
     public void absorbdata(SensorData sensorData){
